@@ -10,7 +10,7 @@ TARGET_NO_BOOTLOADER := true
 
 # Platform
 TARGET_BOARD_PLATFORM := hi6250
-TARGET_BOARD_PLATFORM_GPU := kirin
+TARGET_BOARD_PLATFORM_GPU := mali-t830mp2
 BUILD_BROKEN_DUP_RULES := true
 
 # Architecture
@@ -25,7 +25,7 @@ TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := generic
+TARGET_2ND_CPU_VARIANT := cortex-a15
 
 TARGET_USES_64_BIT_BINDER := true
 TARGET_SUPPORTS_64_BIT_APPS := true
@@ -50,7 +50,8 @@ BOARD_VENDORIMAGE_PARTITION_SIZE := 612368384
 
 # System as root
 #BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
-BOARD_ROOT_EXTRA_FOLDERS := cache d hw_odm modem_log preload sec_storage splash2 preavs
+BOARD_ROOT_EXTRA_FOLDERS := d
+BOARD_SUPPRESS_SECURE_ERASE := true
 
 # File System
 TARGET_EXFAT_DRIVER := exfat
@@ -60,19 +61,19 @@ TARGET_USERIMAGES_USE_F2FS := true
 # Workaround for error copying vendor files to recovery ramdisk
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR := vendor
-TARGET_COPY_OUT_PRODUCT := product
-BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
+
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
-BOARD_SUPPRESS_SECURE_ERASE := true
+TW_INPUT_BLACKLIST := "hbtp_vm"
 RECOVERY_SDCARD_ON_DATA := true
+BOARD_HAS_NO_REAL_SDCARD := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_EXTRA_LANGUAGES := true
 TW_INCLUDE_NTFS_3G := true
@@ -80,7 +81,6 @@ TW_USE_TOOLBOX := true
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd_backlight0/brightness
 TW_MAX_BRIGHTNESS := 2048
 TW_DEFAULT_BRIGHTNESS := 1200
-TARGET_USE_CUSTOM_LUN_FILE_PATH := "/config/usb_gadget/g1/functions/mass_storage.gs6/lun.%d/file"
 TW_CUSTOM_BATTERY_PATH := /sys/class/power_supply/Battery
 TW_NO_HAPTICS := true
 TARGET_USES_LOGD := true
