@@ -80,6 +80,7 @@ TW_USE_TOOLBOX := true
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd_backlight0/brightness
 TW_MAX_BRIGHTNESS := 2048
 TW_DEFAULT_BRIGHTNESS := 1200
+TW_FRAMERATE := 60
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/config/usb_gadget/g1/functions/mass_storage.gs6/lun.%d/file"
 TW_CUSTOM_BATTERY_PATH := /sys/class/power_supply/Battery
 TW_NO_HAPTICS := true
