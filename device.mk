@@ -15,29 +15,37 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/huawei/leland
+# Define hardware platform
+PRODUCT_PLATFORM := hi6250
 
-# Kernel
-PRODUCT_COPY_FILES += \
-    device/huawei/leland/dummykernel:kernel
-	
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+
+# API
+PRODUCT_SHIPPING_API_LEVEL := 26
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
+
+TARGET_RECOVERY_DEVICE_MODULES += \
+    libcap \
+    libion
+
+TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libcap.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so
+
+# Overrides
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=$(PRODUCT_RELEASE_NAME) \
+    TARGET_DEVICE=$(PRODUCT_RELEASE_NAME)
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product.device=$(PRODUCT_RELEASE_NAME)
 
 # Blacklist
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
     ro.bootimage.build.date.utc \
     ro.build.date.utc
-
-# Usb
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=manufacture,adb,mtp \
-    ro.sys.usb.storage.type=mtp,adb \
-    sys.usb.configfs=1 \
-    sys.usb.controller=ff100000.dwc3 \
-    ro.secure=0 \
-    ro.adb.secure=0 \
-    ro.allow.mock.location=0 \
-    service.adb.root=1 \
-    ro.debuggable=1
