@@ -1,13 +1,13 @@
 # Android fstab file.
 #<src>                                                  <mnt_point>         <type>    <mnt_flags and options>                       <fs_mgr_flags>
 # The filesystem that contains the filesystem checker binary (typically /system) cannot
-/dev/block/bootdevice/by-name/system    /system     ext4    ro,barrier=1    wait,avb
-/dev/block/bootdevice/by-name/vendor    /vendor     ext4    ro,barrier=1    wait,avb
-/dev/block/bootdevice/by-name/product   /product    ext4    ro,barrier=1    wait
-/dev/block/bootdevice/by-name/version   /version    ext4    ro,barrier=1    wait
-/dev/block/bootdevice/by-name/cust      /cust       ext4    ro,barrier=1    wait
-/dev/block/bootdevice/by-name/odm       /odm        ext4    ro,barrier=1    wait
-/dev/block/bootdevice/by-name/patch     /patch_hw   ext4    ro              wait
+/dev/block/bootdevice/by-name/system    /system     ext4    rw,barrier=1    wait,avb
+/dev/block/bootdevice/by-name/vendor    /vendor     ext4    rw,barrier=1    wait,avb
+/dev/block/bootdevice/by-name/product   /product    ext4    rw,barrier=1    wait
+/dev/block/bootdevice/by-name/version   /version    ext4    rw,barrier=1    wait
+/dev/block/bootdevice/by-name/cust      /cust       ext4    rw,barrier=1    wait
+/dev/block/bootdevice/by-name/odm       /odm        ext4    rw,barrier=1    wait
+/dev/block/bootdevice/by-name/patch     /patch_hw   ext4    rw              wait
 /devices/hi_mci.1/mmc_host/mmc1/*                       auto                auto      defaults                                      voldmanaged=sdcard:auto,noemulatedsd
 /devices/platform/hi_mci.1/mmc_host/mmc1/*                       auto                auto      defaults                                      voldmanaged=sdcard:auto,noemulatedsd
 /devices/hisi-usb-otg/usb1/*                            auto                auto      defaults                                      voldmanaged=usbotg:auto
