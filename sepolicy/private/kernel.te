@@ -1,4 +1,7 @@
-allow kernel device:dir { write };
+allow kernel device:dir { write add_name };
 allow kernel block_device:dir { search };
-allow kernel device:chr_file { write };
+allow kernel block_device:blk_file { open read };
+allow kernel device:chr_file { open write };
 allow kernel recovery:fd { use };
+allow kernel kernel:capability { mknod };
+allow kernel kernel:chr_file { open };

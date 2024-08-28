@@ -1,3 +1,4 @@
 allow init kernel:security { setcheckreqprot };
 allow init kernel:system { module_request };
+allow init sysfs:file { write setattr open };
 allow init functionfs:dir { mounton };

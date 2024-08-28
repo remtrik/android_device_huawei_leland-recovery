@@ -37,12 +37,12 @@ Works:
 - Flashing (opengapps, roms, images and so on)
 - Backup/Restore
 - USB OTG
+- Vibration support
 
 TO-DO:
 
 - Decryption of /Data
 - Format of /Data
-- Vibration support
 
 Please note that we won't build/include kernel in twrp for this device, because will be used stock kernel from erecovery_kernel partion
 

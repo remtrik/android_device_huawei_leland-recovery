@@ -1,12 +1,6 @@
-import /init.recovery.hi6250.usb.rc
-
 on fs
-    start fixlinks
-
-service fixlinks /system/bin/fixlinks.sh
-    oneshot
-    disabled
-    seclabel u:r:recovery:s0
+    wait /dev/block/platform/hi_mci.0
+    symlink /dev/block/platform/hi_mci.0 /dev/block/bootdevice
 
 service oeminfo_nvm /system/bin/true
     disabled
@@ -14,3 +8,7 @@ service oeminfo_nvm /system/bin/true
 on boot
     chown system system /sys/devices/platform/ff100000.hisi_usb/plugusb
     chmod 0660 /sys/devices/platform/ff100000.hisi_usb/plugusb
+
+    # needed for vibration to sort of work
+    write /sys/class/leds/vibrator/trigger timer
+    write /sys/class/leds/vibrator/delay_off 1

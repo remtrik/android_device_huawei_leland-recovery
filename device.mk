@@ -15,23 +15,34 @@
 # limitations under the License.
 #
 
+# API
+PRODUCT_SHIPPING_API_LEVEL := 26
+
+# Assert
+TARGET_OTA_ASSERT_DEVICE := leland,hi6250
+
 # Define hardware platform
 PRODUCT_PLATFORM := hi6250
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+# Display
+TARGET_SCREEN_HEIGHT := 2160
+TARGET_SCREEN_WIDTH := 1080
 
-# API
-PRODUCT_SHIPPING_API_LEVEL := 26
+# Platform
+PLATFORM_VERSION := 99.87.36
+PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
+
+# Security patch
+PLATFORM_SECURITY_PATCH := 2127-12-31
+
+# Vendor security patch
+VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
-TARGET_RECOVERY_DEVICE_MODULES += \
-    libcap \
-    libion
+TARGET_RECOVERY_DEVICE_MODULES += libcap libion
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libcap.so \

@@ -1,1 +1,4 @@
-allow tee rootfs:file { read execute entrypoint };
+allow tee rootfs:file { open getattr read execute entrypoint };
+allow tee rootfs:dir { read };
+allow tee tee:process { execmem };
+allow tee device:chr_file { read open write };
