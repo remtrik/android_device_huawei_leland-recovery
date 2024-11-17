@@ -1,7 +1,6 @@
 ro.product.vendor.marketname=Huawei Honor 9 Lite
 ro.product.board=leland
 ro.board.platform=hi6250
-ro.build.selinux=1
 sys.usb.controller=ff100000.dwc3
 persist.sys.sdcardfs.emulated=1
 persist.sys.sdcardfs.public=1
